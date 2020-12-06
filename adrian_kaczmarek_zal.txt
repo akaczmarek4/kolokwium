@@ -1,0 +1,38 @@
+Zadanie 2 
+select
+p.firstName,
+p.lastName,
+p.employeeNumber,
+count(*) customers_number
+from customers c join employees p on p.employeeNumber = c.salesRepEmployeeNumber 
+join offices o on p.officeCode = o.officeCode
+group by p.employeeNumber;
+
+Zadanie 4.a
+select 
+year(o.orderDate) rok,
+count(*) ilosc
+from orderdetails od 
+join orders o on od.orderNumber = o.orderNumber 
+join products p on p.productCode = od.productCode 
+where productName = '1969 Harley Davidson Ultimate Chopper'
+group by rok;
+
+
+Zadanie 4.b
+select year(o.orderDate) rok,
+sum(od.quantityOrdered) suma 
+rom orderdetails od 
+join orders o on od.orderNumber = o.orderNumber 
+join products p on p.productCode = od.productCode 
+where productName = '1969 Harley Davidson Ultimate Chopper'
+group by rok;
+
+Zadanie 4.c
+select pl.*,
+count(*) productionQuantity
+from productlines pl
+join products p on p.productLine = pl.productLine group by p.productLine having productionQuantity > 10;
+
+LINK DO GITHUB
+https://github.com/akaczmarek4/kolokwium
